@@ -17,24 +17,22 @@
         let run = 0;
         let wicket = 0;
         let summary = [];
+        let hit = 0;
         // to add score to the number plate
         const addScore = (num) => {
-            if (wicket < 10) {
-                run += num;
-                summary.push(num);
-                rootElement.render(<App />);
-                return run;
-            }
+            hit = num;
+            rootElement.render(<App />);
+
         }
+
         // to add wickets to the plate
         const addWicket = () => {
-            if (wicket < 10) {
-                wicket += 1;
-                summary.push("W");
-                rootElement.render(<App />);
-                return wicket;
-            }
+
+            hit = "W";
+            rootElement.render(<App />);
+
         }
+
 
         // all the buttons combined
         const ScoreBtns = () => (
@@ -51,28 +49,45 @@
             </>
         )
 
+        const Result = () => (
+            <div>
+                {summary.map((num, index) => (
+                    <>
+                        {index % 6 === 0 ? <br /> : null}
+                        <span key={index}>{num === 0 ? <strong>.</strong> : num}</span>&nbsp;&nbsp;&npsp;</>
+                )
 
+                )}
+            </div>
+        )
+        function handleSubmit(event) {
+            event.preventDefault();
+            summary.unshift(hit);
+            rootElement.render(<App />);
+
+        }
+        const Form = () => (
+            <form onSubmit={handleSubmit}>
+                <input value={hit} />
+                <input />
+                <button>Submit</button>
+            </form>
+        )
         const App = () => (
             <>
                 <div className="App">
                     <h1>Score Keeper App</h1>
                     <p className="plate">Score:&nbsp; <span id="run">{run}</span>/<span id="gilli">{wicket}</span></p>
-                    
                     < ScoreBtns />
-                <div>
-                    {summary.map((num, index) =>
-                        {
-                         return   (index % 6 === 0 ?
-                                (<> 
-                                <br /> 
-                                <span >{num}&nbsp;&nbsp;</span>
-                                </>)
-                                : <span>{num}&nbsp;&nbsp;</span>)
-                            }
-                            
-                    )}
+                    <br />
+                    
+                    <Form />
+                    <hr />
+                    {summary.map((run,index)=>(
+                        <p key={index}>{run}</p>
+                    ))}
+
                 </div>
-            </div>
             </>
         );
 
