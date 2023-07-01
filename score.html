@@ -18,20 +18,19 @@
         let wicket = 0;
         let summary = [];
         let hit = 0;
+        let inputRef = React.createRef();
+        
+        
         // to add score to the number plate
         const addScore = (num) => {
             hit = num;
             rootElement.render(<App />);
-
         }
-
         // to add wickets to the plate
         const addWicket = () => {
-
             hit = "W";
             rootElement.render(<App />);
-
-        }
+         }
 
 
         // all the buttons combined
@@ -62,21 +61,32 @@
         )
         function handleSubmit(event) {
             event.preventDefault();
-            summary.unshift(hit);
+            if(hit === "W"){
+                wicket=wicket+1;
+            }
+            else{
+                run+=hit;
+            }
+            summary.unshift(
+                <span>{hit}{",   "}{inputRef.current.value}</span>
+            );
+            console.log(inputRef.current.value);
+
             rootElement.render(<App />);
 
         }
         const Form = () => (
             <form onSubmit={handleSubmit}>
                 <input value={hit} />
-                <input />
+                <input ref={inputRef} placeholder="ex..what a shot!"/>
                 <button>Submit</button>
             </form>
         )
         const App = () => (
             <>
                 <div className="App">
-                    <h1>Score Keeper App</h1>
+                    <h1 className="title">Score Keeper App</h1>
+                    <div className="underline" ></div>
                     <p className="plate">Score:&nbsp; <span id="run">{run}</span>/<span id="gilli">{wicket}</span></p>
                     < ScoreBtns />
                     <br />

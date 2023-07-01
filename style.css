@@ -2,6 +2,20 @@
     display:flex;
     flex-direction:column;
     text-align:center;
+    gap:1rem;
+}
+.title{
+    letter-spacing: 0.23rem;
+    font-weight:800;
+    font-size:2.5rem;
+}
+.underline{
+    border-bottom:5px solid rgb(104, 100, 100);
+    width:10rem;
+    margin-top:-2rem;
+    margin-left:37rem;
+    
+    
 }
 
 .plate{
@@ -15,7 +29,10 @@
     background-color:rgb(199, 191, 191);
     color:blue;
     font-weight:600;
-    margin-left:37rem;
+    position:fixed;
+    left:37rem;
+    top:7rem;
+    
 }
 #run{
     color:white;
@@ -25,9 +42,7 @@
 }
 .btns{
     display:inline;
-}
-.summ{
-    display:flex;
+    margin-top:6rem;
 }
 span{
     display: inline;
