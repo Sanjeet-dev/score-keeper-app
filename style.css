@@ -61,7 +61,8 @@
     letter-spacing:0.2rem;
     font-size:medium;
     font-weight:700;
-    padding-left:4px;
+    padding-left: 2rem;
+
     border-radius:12px;
 }
 button {
@@ -77,6 +78,7 @@ button {
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     border-radius: 0.3rem;
+    outline:none;
   }
   button:hover {
     color: white;
