@@ -68,8 +68,11 @@
                 run+=hit;
             }
             summary.unshift(
-                <span>{hit}{",   "}{inputRef.current.value}</span>
+                // <span>{hit}{",   "}{inputRef.current.value}</span>
+                <span id="status">{hit},  {inputRef.current.value}...</span>
             );
+            hit = 0;
+            inputRef.current.value="";
             console.log(inputRef.current.value);
 
             rootElement.render(<App />);
@@ -77,8 +80,8 @@
         }
         const Form = () => (
             <form onSubmit={handleSubmit}>
-                <input value={hit} />
-                <input ref={inputRef} placeholder="ex..what a shot!"/>
+                <input id="score" value={hit} />
+                <input id="comment" ref={inputRef} placeholder="ex..what a shot!"/>
                 <button>Submit</button>
             </form>
         )
